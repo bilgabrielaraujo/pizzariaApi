@@ -12,6 +12,7 @@ const db = mysql.createPool({
     try {
         const connection = await db.getConnection();
         console.log('Conexão com o banco de dados estabelecida com sucesso!');
+        connection.release();
     } catch(err) {
         console.error('Erro ao conectar com o bando de dados:', err)
     }
