@@ -17,3 +17,5 @@ const db = mysql.createPool({
         console.error('Erro ao conectar com o bando de dados:', err)
     }
 })();
+
+export default db;

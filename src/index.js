@@ -40,7 +40,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 // import authRoutes from './routes/authRoutes.js';
-// import usuarioRoutes from './routes/usuarioRoutes.js';
+ import usuarioRoutes from './routes/usuarioRoutes.js';
 // import produtoRoutes from './routes/produtoRoutes.js';
 // import pedidoRoutes from './routes/pedidoRoutes.js';
 // import { ClientRequest, METHODS } from 'http';
@@ -69,7 +69,7 @@ app.get('/', (req, res) => {
 
 const apiPrefix = '/api';
 
-// app.use(`${apiPrefix}/usuario` , usuarioRoutes);
+app.use(`${apiPrefix}/usuario` , usuarioRoutes);
 // app.use(`${apiPrefix}/login` , authRoutes);
 // app.use(`${apiPrefix}/produtos`, produtoRoutes);
 // app.use(`${apiPrefix}/pedidos`, pedidoRoutes);

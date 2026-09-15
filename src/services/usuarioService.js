@@ -2,7 +2,7 @@ import db from '../db/db.js';
 import bcrypt from 'bcrypt';
 
 export const findAll = async (cpf, nome, email) => {
-    let sql = 'SELECT * FROM usuario';
+    let sql = ' SELECT * FROM usuario ';
     const conditions = [];
     const valeus = [];
     if (cpf) {
@@ -10,8 +10,8 @@ export const findAll = async (cpf, nome, email) => {
         valeus.push(cpf);
 
     } if (nome) {
-        conditions.push('LOWER(nome) LIKE = ?');
-        valeus.push(`%${nome.ToLowerCase()}%`);
+        conditions.push('LOWER(nome) LIKE  ?');
+        valeus.push(`%${nome.toLowerCase()}%`);
 
     } if (email) {
         conditions.push('email = ?');
@@ -21,7 +21,7 @@ export const findAll = async (cpf, nome, email) => {
         sql += ' WHERE ' + conditions.join(' AND ');
 
     }
-    const [rows] = await db.quary(sql, valeus)
+    const [rows] = await db.query(sql, valeus)
     return rows;
 };
 
@@ -35,7 +35,7 @@ export const create = async (usuarioData) => {
     };
 
 
-    await db.quary(' INSERT INTO usuario SET ?', newUsuario);
+    await db.query(' INSERT INTO usuario SET ?', newUsuario);
 
     delete newUsuario.senha;
     return newUsuario;
@@ -54,3 +54,4 @@ export const remove = async (cpf) => {
     const [result] = await db.quary('DELETE FROM usuario WHERE cpf = ?', [cpf]);
     return result.affectedRows > 0;
 };
+
